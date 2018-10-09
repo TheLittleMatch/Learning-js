@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="output">
+        <ul>
+        </ul>
+    </div>
+
+    <script>
+        var list = document.querySelector('.output ul');
+        list.innerHTML = '';
+        var cities = ['lonDon', 'ManCHESTer', 'BiRmiNGHAM', 'liVERpoOL'];
+        for (var i = 0; i < cities.length; i++) {
+            var input = cities[i];
+            // write your code just below here
+            var tmp = input.toLowerCase();
+            var firstLetter = tmp.slice(0, 1).toUpperCase();
+            var otherLetter = tmp.slice(1);
+            console.log(firstLetter + otherLetter);
+            input = firstLetter + otherLetter;
+            var result = input;
+            var listItem = document.createElement('li');
+            listItem.textContent = result;
+            list.appendChild(listItem);
+        }
+    </script>
+</body>
+
+</html>

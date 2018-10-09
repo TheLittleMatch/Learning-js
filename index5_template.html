@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>start machine!</button>
+    <p>the machine has started!</p>
+    <br>
+    <button class="btn1">Press me!</button>
+
+    <div class="output">
+        <ul>
+        </ul>
+    </div>
+    <script>
+        var btn = document.querySelector('button');
+        var txt = document.querySelector('p');
+
+        btn.addEventListener('click', updateBtn);
+
+        function updateBtn() {
+            if (btn.textContent === 'Start machine') {
+                btn.textContent = 'Stop machine';
+                txt.textContent = 'The machine has started!';
+            } else {
+                btn.textContent = 'Start machine';
+                txt.textContent = 'The machine is stopped.';
+            }
+        }
+        var btn = document.querySelector('.btn1');
+        btn.addEventListener('click', function() {
+            var para = document.querySelector('.btn');
+            var name = prompt('What is your name?');
+            alert('Hello ' + name + ', nice to see you!');
+        });
+
+        var myString = '123';
+        var myNum = Number(myString);
+        typeof myNum;
+        console.log(typeof myNum)
+
+        var myNum = 123;
+        var myString = myNum.toString();
+        typeof myString;
+        console.log(typeof myString)
+
+        var browserType = 'mozilla';
+        var a = browserType.length;
+        console.log(a)
+        console.log(browserType[1])
+        console.log(browserType.indexOf('zilla'))
+        console.log(browserType.indexOf('vanilla'))
+        if (browserType.indexOf('mozilla') !== -1) {
+            // do stuff with the string
+            console.log(111)
+        }
+        var b = browserType.slice(0, 3);
+        var c = browserType.slice(3);
+        console.log(b);
+        console.log(c);
+
+        var radData = 'My NaMe Is MuD';
+        radData.toLowerCase();
+        radData.toUpperCase();
+
+        var d = browserType.replace('moz', 'van');
+        console.log(d);
+
+
+        var list = document.querySelector('.output ul');
+        list.innerHTML = '';
+        var greetings = ['Happy Birthday!',
+            'Merry Christmas my love',
+            'A happy Christmas to all the family',
+            'You\'re all I want for Christmas',
+            'Get well soon'
+        ];
+
+        for (var i = 0; i < greetings.length; i++) {
+            var input = greetings[i];
+            // Your conditional test needs to go inside the parentheses
+            // in the line below, replacing what's currently there
+            if (greetings[i]) {
+                var result = input;
+                var listItem = document.createElement('li');
+                listItem.textContent = result;
+                list.appendChild(listItem);
+            }
+        }
+    </script>
+</body>
+
+</html>

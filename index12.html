@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="msgBox">
+        <p>This is a message box</p>
+        <button>x</button>
+    </div>
+    <script>
+        function myFunction() {
+            alert(1)
+        }
+        //myFunction();
+
+        var myButton = document.querySelector('button');
+        //匿名函数
+        myButton.onclick = function() {
+            alert('hello');
+        }
+
+        var myGreeting = function() {
+                alert('hello');
+            }
+            //  myGreeting();
+
+        var anotherGreeting = function() {
+                alert('hello');
+            }
+            // anotherGreeting();
+
+        function displayMessage() {
+            var html = document.querySelector('html');
+
+            var panel = document.createElement('div');
+            panel.setAttribute('class', 'msgBox');
+            html.appendChild(panel);
+
+            var msg = document.createElement('p');
+            msg.textContent = 'This is a message box';
+            panel.appendChild(msg);
+
+            var closeBtn = document.createElement('button');
+            closeBtn.textContent = 'x';
+            panel.appendChild(closeBtn);
+
+            closeBtn.onclick = function() {
+                panel.parentNode.removeChild(panel);
+            }
+        }
+        displayMessage();
+
+        //btn.onclick=displayMessage   如果加括号会直接运行
+    </script>
+</body>
+
+</html>

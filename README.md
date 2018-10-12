@@ -12,6 +12,8 @@ javascript learning record.
 - index8.html //数组的实用案例
 - index9.html //pop(),push(),shift(),unshift()
 - index10.html //笑话生成器
+- index10.html //if
+- index12.html //function
 
 
 

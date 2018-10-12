@@ -9,6 +9,12 @@
 </head>
 
 <body>
+    <div class="output">
+        <ul>
+            <li>0</li>
+        </ul>
+        <p>Total: $0.00</p>
+    </div>
     <script>
         var list = document.querySelector('.output ul');
         var totalBox = document.querySelector('.output p');
@@ -16,26 +22,41 @@
         list.innerHTML = '';
         totalBox.textContent = '';
         // number 1
-        'Underpants:6.99'
-        'Socks:5.99'
-        'T-shirt:14.99'
-        'Trousers:31.99'
-        'Shoes:23.99';
-
-        for (var i = 0; i <= 0; i++) { // number 2
+        //        'Underpants:6.99'
+        //       'Socks:5.99'
+        //      'T-shirt:14.99'
+        //     'Trousers:31.99'
+        //    'Shoes:23.99';
+        var products = [
+            'Underpants:6.99',
+            'Socks:5.99',
+            'T-shirt:14.99',
+            'Trousers:31.99',
+            'Shoes:23.99'
+        ];
+        var price = [];
+        var kinds = [];
+        var sum = 0;
+        for (var i = 0; i < products.length; i++) {
+            // number 2
+            var tmp = products[i];
+            var x = tmp.split(':');
+            kinds.push(x[0]);
+            price.push(x[1]);
+            sum += Number(x[1]);
             // number 3
-
             // number 4
 
             // number 5
-            itemText = 0;
+            itemText = x[0] + " " + x[1];
 
             var listItem = document.createElement('li');
             listItem.textContent = itemText;
             list.appendChild(listItem);
         }
-
+        total = Number(sum);
         totalBox.textContent = 'Total: $' + total.toFixed(2);
+        //toFixed 是number的四舍五入方法
     </script>
 </body>
 

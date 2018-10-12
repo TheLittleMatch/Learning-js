@@ -10,6 +10,8 @@ javascript learning record.
 - index6.html //字符串操作。
 - index7.html //数组
 - index8.html //数组的实用案例
+- index9.html //pop(),push(),shift(),unshift()
+- index10.html //笑话生成器
 
 
 

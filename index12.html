@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        input {
+            font-size: 2em;
+            margin: 10px 1px 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -57,6 +63,24 @@
         displayMessage();
 
         //btn.onclick=displayMessage   如果加括号会直接运行
+    </script>
+
+
+    <input class="numberInput" type="text">
+    <p></p>
+
+    <script>
+        //返回值
+        var input = document.querySelector('.numberInput');
+        var para = document.querySelector('p');
+        input.onchange = function() {
+            var num = input.value;
+            if (isNaN(num)) {
+                para.textContent = 'You need to enter a number!';
+            } else {
+                para.textContent = 'Number';
+            }
+        }
     </script>
 </body>
 

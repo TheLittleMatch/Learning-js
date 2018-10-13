@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>Change color</button>
+    <script>
+        var btn = document.querySelector('button');
+
+        function random(number) {
+            return Math.floor(Math.random() * (number + 1));
+        }
+
+        btn.onclick = function() {
+            var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+            document.body.style.backgroundColor = rndCol;
+        }
+
+
+        //  <button onclick="bgChange()">Press me</button>
+        // 这种写法不要用
+        //  var buttons = document.querySelectorAll('button');
+        //        for (var i = 0; i < buttons.length; i++) {
+        //           buttons[i].onclick = bgChange;
+        //      }
+        //
+        //清除事件方法
+        //btn.removeEventListener('click', bgChange);
+
+
+        //myElement.onclick = functionA;
+        //myElement.onclick = functionB;
+        //上面这种会覆盖
+        //下面这种都会执行
+        //myElement.addEventListener('click', functionA);
+        //myElement.addEventListener('click', functionB);
+
+        //事件处理程序属性功能和选项会更少， 
+        //但是具有更好的跨浏览器兼容性(在Internet Explorer 8 的支持下)， i
+        // 您应该从这些开始学起。
+        //DOM Level 2 Events(addEventListener(), etc.) 更强大，
+        //但也可以变得更加复杂， 并且支持不足（ 只支持到Internet Explorer 9）。 
+        // 但是您也应该尝试这个方法， 并尽可能地使用它们。
+    </script>
+
+</body>
+
+</html>

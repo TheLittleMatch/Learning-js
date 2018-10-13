@@ -14,6 +14,22 @@ javascript learning record.
 - index10.html //笑话生成器
 - index10.html //if
 - index12.html //function
+- index13.html //events
+- index14.html //事件对象
+- index15.html //阻止事件默认行为
+- index16.html //事件冒泡及捕获
+
+
+
+> result后缀为答案，template后缀为未书写答案的模板。-副本为之前尝试的程序。
+
+
+
+
+
+> result后缀为答案，template后缀为未书写答案的模板。-副本为之前尝试的程序。
+
+
 
 
 

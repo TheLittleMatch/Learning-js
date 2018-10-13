@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Show video box example</title>
+    <style>
+        div {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 480px;
+            height: 380px;
+            border-radius: 10px;
+            background-color: #eee;
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+        }
+        
+        .hidden {
+            left: -50%;
+        }
+        
+        .showing {
+            left: 50%;
+        }
+        
+        div video {
+            display: block;
+            width: 400px;
+            margin: 40px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!--事件冒泡和捕捉是两种机制，主要描述当在一个元素上有两个相同类型的事件处理器被激活会发生什么。-->
+    <button>Display video</button>
+
+    <div class="hidden">
+        <video>
+        <source src="./sources/rabbit320.mp4" type="video/mp4">
+        <source src="./sources/rabbit320.webm" type="video/webm">
+        <p>Your browser doesn't support HTML5 video. Here is a <a href="rabbit320.mp4">link to the video</a> instead.</p> 
+      </video>
+    </div>
+
+    <script>
+        var btn = document.querySelector('button');
+        var videoBox = document.querySelector('div');
+        var video = document.querySelector('video');
+
+        btn.onclick = function() {
+            videoBox.setAttribute('class', 'showing');
+        }
+
+        videoBox.onclick = function() {
+            videoBox.setAttribute('class', 'hidden');
+        };
+
+        video.onclick = function(e) {
+            video.play();
+            e.stopPropagation();
+        };
+        //对事件冒泡和捕捉的解释
+        //浏览器检查元素的最外层祖先<html>，是否在捕获阶段中注册了一个onclick事件处理程序，
+        //如果是，则运行它。
+
+        //然后，它移动到<html>中的下一个元素，并执行相同的操作，
+        //然后是下一个元素，依此类推，直到到达实际点击的元素。
+
+        //在冒泡阶段，恰恰相反:
+        //浏览器检查实际点击的元素是否在冒泡阶段中注册了一个onclick事件处理程序，如果是，则运行它
+        //然后它移动到下一个直接的祖先元素，并做同样的事情，然后是下一个，等等，直到它到达<html>元素。
+
+
+        //w3c模型
+        // 任何事件发生时，先从顶层开始进行事件捕获，
+        // 直到事件触发到达了事件源元素。然后，再从事件源往上进行事件冒泡，直到到达document。
+        //ele.addEventListener('click',doSomething2,true)//默认是false。false采用冒泡。
+
+        //stopPropagation(),阻止传播
+        //preventDefault() ,阻止默认行为
+
+
+        //注解: 为什么我们要弄清楚捕捉和冒泡呢？那是因为，
+        // 在过去糟糕的日子里，浏览器的兼容性比现在要小得多，
+        // Netscape（网景）只使用事件捕获，而Internet Explorer只使用事件冒泡。
+        //当W3C决定尝试规范这些行为并达成共识时，他们最终得到了包括这两种情况（捕捉和冒泡）的系统，
+        //最终被应用在现在浏览器里。
+
+        //注解: 如上所述，默认情况下，所有事件处理程序都是在冒泡阶段注册的，
+        //这在大多数情况下更有意义。如果您真的想在捕获阶段注册一个事件，
+        //那么您可以通过使用addEventListener()注册您的处理程序，
+        //并将可选的第三个属性设置为true。
+
+        //事件委托
+        //冒泡还允许我们利用事件委托——这个概念依赖于这样一个事实,如果你想要在大量子元素中单击任何
+        //一个都可以运行一段代码，您可以将事件监听器设置在其父节点上，
+        //并将事件监听器气泡的影响设置为每个子节点，而不是每个子节点单独设置事件监听器。
+
+        //一个很好的例子是一系列列表项，如果你想让每个列表点击时弹出一条信息，
+        //您可以将click单击事件监听器设置在父元素<ul>上，它将会冒泡到列表项上。
+    </script>
+</body>
+
+</html>

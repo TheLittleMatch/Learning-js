@@ -37,6 +37,97 @@
     //  the current object the code is being written inside
 
     // var myNotification = new Notification('Hello!');
+
+    //构建函数
+    //JavaScript 用一种称为构建函数的特殊函数来定义对象和它们的特征。
+
+    function Person(first, last, age, gender, interests) {
+        this.name = {
+            first,
+            last
+        };
+        this.age = age;
+        this.gender = gender;
+        this.interests = interests;
+        this.bio = function() {
+            alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. He likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+        };
+        this.greeting = function() {
+            alert('Hi! I\'m ' + this.name.first + '.');
+        };
+    };
+    // 注： 一个构建函数通常是大写字母开头，这样便于区分构建函数和普通函数。
+
+    var person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
+    //  person1['age']
+    //  person1.interests[1]
+    //  person1.bio()
+    // etc.
+
+    //Object构建函数
+    var person1 = new Object();
+    person1.name = 'Chris';
+    person1['age'] = 38;
+    person1.greeting = function() {
+        alert('Hi! I\'m ' + this.name + '.');
+    }
+    var person2 = new Object({
+        name: 'Chris',
+        age: 38,
+        greeting: function() {
+            alert('Hi! I\'m ' + this.name + '.');
+        }
+    });
+
+    //使用create()方法,允许现有方法创建新的方法
+    var person2 = Object.create(person1);
+    person2.name
+    person2.greeting()
+
+    //JavaScript 常被描述为一种基于原型的语言 (prototype-based language)——每个对象拥有一个原型对象，
+    //对象以其原型为模板、从原型继承方法和属性。
+    //原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。
+    //这种关系常被称为原型链 (prototype chain)
+
+    //在传统的 OOP 中，首先定义“类”，此后创建对象实例时，
+    //类中定义的所有属性和方法都被复制到实例中。在 JavaScript 
+    //中并不如此复制——而是在对象实例和它的构造器之间建立一个链接
+    //（它是__proto__属性，是从构造函数的prototype属性派生的），
+    //之后通过上溯原型链，在构造器中找到这些属性和方法。
+
+    function doSomething() {}
+    console.log(doSomething.prototype);
+    // It does not matter how you declare the function, a
+    //  function in javascript will always have a default
+    //  prototype property.
+    var doSomething = function() {};
+    console.log(doSomething.prototype);
+
+
+    function doSomething1() {}
+    doSomething1.prototype.foo = "bar"; // add a property onto the prototype
+    var doSomeInstancing = new doSomething1();
+    doSomeInstancing.prop = "some value"; // add a property onto the object
+    console.log(doSomeInstancing);
+
+    //函数的property 就相当于对象的__proto__
+
+    function doSomething() {}
+    doSomething.prototype.foo = "bar";
+    var doSomeInstancing = new doSomething();
+    doSomeInstancing.prop = "some value";
+    console.log("doSomeInstancing.prop:      " + doSomeInstancing.prop);
+    console.log("doSomeInstancing.foo:       " + doSomeInstancing.foo);
+    console.log("doSomething.prop:           " + doSomething.prop);
+    console.log("doSomething.foo:            " + doSomething.foo);
+    console.log("doSomething.prototype.prop: " + doSomething.prototype.prop);
+    console.log("doSomething.prototype.foo:  " + doSomething.prototype.foo);
+    //doSomeInstancing.prop: some value
+    //doSomeInstancing.foo: bar
+    //doSomething.prop: undefined
+    //doSomething.foo: undefined
+    //doSomething.prototype.prop: undefined
+    //doSomething.prototype.foo: bar
 </script>
 
 </html>

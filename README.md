@@ -19,6 +19,8 @@ javascript learning record.
 - index15.html //阻止事件默认行为
 - index16.html //事件冒泡及捕获
 - index16.html //事件冒泡及捕获
+- index17 //gallery
+- index18 //Object
 
 > result后缀为答案，template后缀为未书写答案的模板。-副本为之前尝试的程序。
 

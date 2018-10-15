@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* || general styles */
+        
+        html {
+            font-family: 'helvetica neue', helvetica, arial, sans-serif;
+        }
+        
+        body {
+            width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1,
+        h2 {
+            font-family: 'Faster One', cursive;
+        }
+        /* header styles */
+        
+        h1 {
+            font-size: 4rem;
+            text-align: center;
+        }
+        
+        header p {
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        /* section styles */
+        
+        section article {
+            width: 33%;
+            float: left;
+        }
+        
+        section p {
+            margin: 5px 0;
+        }
+        
+        section ul {
+            margin-top: 0;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            letter-spacing: -5px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+    </header>
+
+    <section>
+    </section>
+    <script>
+        //JSON // [] 
+        var jsonStr = [{
+            "name": "Molecule Man",
+            "age": 29,
+            "secretIdentity": "Dan Jukes",
+            "powers": ["Radiation resistance", "Turning tiny", "Radiation blast"]
+        }, {
+            "name": "Madame Uppercut",
+            "age": 39,
+            "secretIdentity": "Jane Wilson",
+            "powers": ["Million tonne punch", "Damage resistance", "Superhuman reflexes"]
+        }];
+        //  JSON 是一种纯数据格式，它只包含属性，没有方法。
+        //JSON 要求有两头的 { } 来使其合法。最安全的写法是有两边的括号，而不是一边。
+        //甚至一个错位的逗号或分号就可以导致  JSON 文件出错。
+        //您应该小心的检查您想使用的数据(虽然计算机生成的 JSON 很少出错，只要生成程序正常工作)。
+        //您可以通过像 JSONLint 的应用程序来检验 JSON。
+        //JSON 可以将任何标准合法的 JSON 数据格式化保存，不只是数组和对象。
+        //比如，一个单一的字符串或者数字可以是合法的 JSON 对象。虽然不是特别有用处……
+        //不像 JavaScript 标识符可以用作属性，在 JSON 中，只有字符串才能用作属性。
+
+
+        var header = document.querySelector('header');
+        var section = document.querySelector('section');
+        var jsonExample = {
+            "squadName": "Super hero squad",
+            "homeTown": "Metro City",
+            "formed": 2016,
+            "secretBase": "Super tower",
+            "active": true,
+            "members": [{
+                "name": "Molecule Man",
+                "age": 29,
+                "secretIdentity": "Dan Jukes",
+                "powers": [
+                    "Radiation resistance",
+                    "Turning tiny",
+                    "Radiation blast"
+                ]
+            }, {
+                "name": "Madame Uppercut",
+                "age": 39,
+                "secretIdentity": "Jane Wilson",
+                "powers": [
+                    "Million tonne punch",
+                    "Damage resistance",
+                    "Superhuman reflexes"
+                ]
+            }, {
+                "name": "Eternal Flame",
+                "age": 1000000,
+                "secretIdentity": "Unknown",
+                "powers": [
+                    "Immortality",
+                    "Heat Immunity",
+                    "Inferno",
+                    "Teleportation",
+                    "Interdimensional travel"
+                ]
+            }]
+        };
+
+        var requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+
+        //创建http请求
+        var request = new XMLHttpRequest();
+        request.open('GET', requestURL);
+        request.responseType = 'json';
+        request.send();
+
+        request.onload = function() {
+            console.log(request.response)
+            var superHeroes = request.response;
+            populateHeader(superHeroes);
+            showHeroes(superHeroes);
+        }
+
+        function populateHeader(jsonObj) {
+            var myH1 = document.createElement('h1');
+            myH1.textContent = jsonObj['squadName'];
+            header.appendChild(myH1);
+
+            var myPara = document.createElement('p');
+            myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + ' // Formed: ' + jsonObj['formed'];
+            header.appendChild(myPara);
+        }
+
+        function showHeroes(jsonObj) {
+            var heroes = jsonObj['members'];
+
+            for (i = 0; i < heroes.length; i++) {
+                var myArticle = document.createElement('article');
+                var myH2 = document.createElement('h2');
+                var myPara1 = document.createElement('p');
+                var myPara2 = document.createElement('p');
+                var myPara3 = document.createElement('p');
+                var myList = document.createElement('ul');
+
+                myH2.textContent = heroes[i].name;
+                myPara1.textContent = 'Secret identity: ' + heroes[i].secretIdentity;
+                myPara2.textContent = 'Age: ' + heroes[i].age;
+                myPara3.textContent = 'Superpowers:';
+
+                var superPowers = heroes[i].powers;
+                for (j = 0; j < superPowers.length; j++) {
+                    var listItem = document.createElement('li');
+                    listItem.textContent = superPowers[j];
+                    myList.appendChild(listItem);
+                }
+
+                myArticle.appendChild(myH2);
+                myArticle.appendChild(myPara1);
+                myArticle.appendChild(myPara2);
+                myArticle.appendChild(myPara3);
+                myArticle.appendChild(myList);
+
+                section.appendChild(myArticle);
+            }
+        }
+        //对象和文本间的转换
+        //request.responseType = 'json';
+        //parse(): 以文本字符串形式接受JSON对象作为参数， 并返回相应的对象。。
+        //stringify(): 接收一个对象作为参数， 返回一个对应的JSON字符串。
+        //request.open('GET', requestURL);
+        //request.responseType = 'text'; // now we're getting a string!
+        //request.send();
+
+        //request.onload = function() {
+        //var superHeroesText = request.response; // get the string from the response
+        //var superHeroes = JSON.parse(superHeroesText); // convert it to an object
+        //populateHeader(superHeroes);
+        //showHeroes(superHeroes);
+        //var myJSON = { "name": "Chris","age": "38" };
+        //myJSON
+        //var myString = JSON.stringify(myJSON);
+        //myString
+        }
+    </script>
+</body>
+
+</html>

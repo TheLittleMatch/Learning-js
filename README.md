@@ -21,9 +21,14 @@ javascript learning record.
 - index16.html //事件冒泡及捕获
 - index17 //gallery
 - index18 //Object
+- index19 //原型式的继承
+- index20 //JSON
+
+
 
 > result后缀为答案，template后缀为未书写答案的模板。-副本为之前尝试的程序。
 
 > result的形式过于麻烦，只使用template
+
 
 

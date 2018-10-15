@@ -23,6 +23,8 @@ javascript learning record.
 - index18 //Object
 - index19 //原型式的继承
 - index20 //JSON
+- index21 //小游戏
+- index22 //小游戏改进
 
 
 

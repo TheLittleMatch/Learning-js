@@ -29,9 +29,10 @@ js
 
 ##### Web入门
 > 对应mdn的web入门模块
+> result为最终样式。来源于mdn的官方的github,方便复习时对照。
 
-##### MDN javascript learning . 20181022-17:35
-html
+##### MDN HTML learning . 20181022-17:35
+html-构建Web
 index1.html
 
 > result后缀为答案，template后缀为未书写答案的模板。-副本为之前尝试的程序。

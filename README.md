@@ -33,7 +33,8 @@ js
 
 ##### MDN HTML learning . 20181022-17:35
 html-构建Web
-index1.html
+index1.html  //元数据等
+index2.html //html文字基础
 
 > result后缀为答案，template后缀为未书写答案的模板。-副本为之前尝试的程序。
 

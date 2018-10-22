@@ -2,6 +2,7 @@
 javascript learning record.
 
 ##### MDN javascript learning . 20181007-18:30
+js 
 - index.html //为P标签加点击事件。事件内容为改变p标签的内容，内容为提示输入的内容。
 - index2.html //为button标签加事件，事件为创建新的p标签
 - index3.html //为button标签加事件，另一种写法。
@@ -26,11 +27,13 @@ javascript learning record.
 - index21 //小游戏
 - index22 //小游戏改进
 
+##### Web入门
+> 对应mdn的web入门模块
 
+##### MDN javascript learning . 20181022-17:35
+html
+index1.html
 
 > result后缀为答案，template后缀为未书写答案的模板。-副本为之前尝试的程序。
 
 > result的形式过于麻烦，只使用template
-
-
-

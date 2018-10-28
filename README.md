@@ -33,10 +33,12 @@ js
 
 ##### MDN HTML learning . 20181022-17:35
 html-构建Web
-index1.html  //元数据等
+index1.html //元数据等
 index2.html //html文字基础,语义化的标签
 index3.html //语义化的布局例子。
 index4.html //写信
+index5.html //构建出有内容的网页(bird)
+
 > result后缀为答案，template后缀为未书写答案的模板。-副本为之前尝试的程序。
 
 > result的形式过于麻烦，只使用template
